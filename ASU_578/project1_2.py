@@ -21,6 +21,7 @@ for oneLine in fileObj:
         continue
 
     Items = oneLine[0: len(oneLine) - 1].split(sep = ',')
+
     age = Items[ageIndex]
     workClass = Items[workClassIndex]
     education = Items[educationIndex]
@@ -133,9 +134,5 @@ for oneLine in fileObj:
             LargerThan50KDataBase['hours'][HoursWork] += 1
         else:
             LargerThan50KDataBase['hours'][HoursWork] = 1                                                                            
-
-
-
-
 
 fileObj.close()
