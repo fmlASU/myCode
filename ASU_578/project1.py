@@ -1,24 +1,54 @@
-file = open('D:\\python_test\\adult.data')
+import pandas as pd
+import numpy as np
 
-DataBase = {'Age': [], 'workclass': [], 'education':[], 'education-num':[], 'marital':[], 'occupation':[], 'relationship':[], 'race':[], 'sex':[]}
+'''
+#data = pd.read_csv('D:\myCode\ASU_578\\adult.data')
 
-for oneLine in file:
-    pass
+columns = ['Age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capitol-gain', 'capitol-loss', 'hour-per-week', 'native-country', 'salary']
 
-#print(data)
+data = pd.read_csv('D:\myCode\ASU_578\\adult.data', header = None, names = columns)
+
+print(data)
+
+gender_salary = {'> 50k':{}, '<= 50k': {}}
+
+gender_salary['> 50k']['Male'] = 0
+gender_salary['> 50k']['Female'] = 0
+gender_salary['<= 50k']['Male'] = 0
+gender_salary['<= 50k']['Female'] = 0
+
+for row in data.iterTuples():
+    if row['salary'] == '>50k' :
+        if row['sex'] == 'Male':
+            gender_salary['> 50k']['Male'] += 1
+        else:
+            gender_salary['> 50k']['Female'] += 1
+    elif row['salary'] == '<=50k' :
+        if row['sex'] == 'Male':
+            gender_salary['<= 50k']['Male'] += 1
+        else:
+            gender_salary['<= 50k']['Female'] += 1
+
+print(gender_salary)
+
+'''
 
 
-file.close()
+
+
+columns = ['Age', 'workclass', 'fnlwgt', 'education', 'education-num', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'capitol-gain', 'capitol-loss', 'hour-per-week', 'native-country', 'salary']
+
+data = pd.read_csv('D:\myCode\ASU_578\\adult.data', header = None, names = columns)
+
+print(data)
+
+
+result_by_salary = data.groupby(['salary', 'sex'])
+finalcount = result_by_salary.value_counts()
+print(finalcount)
 
 pass
 
 
-'''
-This is a test from Meiling
-This is a test from Meiling2
-This is a test from Meiling3
-This is a test from Wenbo
-This is a test from Wenbo2
-This is a test from Wenbo3
-This is a test from Wenbo4
-'''
+#clean_data[column] = clean_data[column].apply(lambda x : x.strip() if x. ,→strip() != '?' else None)
+
